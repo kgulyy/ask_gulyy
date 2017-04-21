@@ -1,0 +1,13 @@
+# JetBrains
+.idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# static
+static
+
+# DB
+db.sqlite3
