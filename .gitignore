@@ -6,8 +6,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# static
+# Static and uploads files
 static
+uploads
 
 # DB
 db.sqlite3
