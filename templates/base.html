@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block header %}
-        {% block title %}
-        {% endblock title %}
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css"%}"/>
-        <link rel="stylesheet" type="text/css" href="{% static "css/style.css"%}"/>
-    {% endblock header %}
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% load static %}
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css"/>
 </head>
 
 <body class="container">
@@ -15,7 +14,7 @@
     <nav class="navbar navbar-default">
         <div class="row">
             <div class="col-md-2">
-                <a class="navbar-brand" href="#">AskGulyy</a>
+                <a class="navbar-brand" href="{% url 'index' %}">AskGulyy</a>
             </div>
             <div class="col-md-7">
                 <form class="navbar-form navbar-left" role="search">
@@ -24,22 +23,25 @@
                 </form>
             </div>
             <div class="col-md-3">
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="mini-ava media-object" src="../uploads/ava.jpg" alt="Avatar">
-                    </a>
-                    <div class="media-body">
-                        <p id="username" class="media-heading">Dr. Pepper</p>
-                        <ol class="list-inline">
-                            <li><a href="#">settings</a></li>
-                            <li><a href="#">log out</a></li>
-                        </ol>
+                {% if reg %}
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="mini-ava media-object" src="../uploads/ava.jpg" alt="Avatar">
+                        </a>
+                        <div class="media-body">
+                            <p id="username" class="media-heading">Dr. Pepper</p>
+                            <ol class="list-inline">
+                                <li><a href="#">settings</a></li>
+                                <li><a href="#">log out</a></li>
+                            </ol>
+                        </div>
                     </div>
-                </div>
-                <!--<ol id="nonreg" class="list-inline navbar-text">
-                    <li><a href="#">log in</a></li>
-                    <li><a href="#">register</a></li>
-                </ol>-->
+                {% else %}
+                    <ol id="nonreg" class="list-inline navbar-text">
+                        <li><a href="#">log in</a></li>
+                        <li><a href="#">register</a></li>
+                    </ol>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -52,14 +54,14 @@
             <div class="sidebar-module">
                 <h4>Popular Tags</h4>
                 <ol class="list-inline">
-                    <li><a href="#">perl</a></li>
-                    <li><a href="#">python</a></li>
-                    <li><a href="#">TechnoPark</a></li>
-                    <li><a href="#">MySQL</a></li>
-                    <li><a href="#">django</a></li>
-                    <li><a href="#">Mail.Ru</a></li>
-                    <li><a href="#">Voloshin</a></li>
-                    <li><a href="#">Firefox</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'perl' %}">perl</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'python' %}">python</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'TechnoPark' %}">TechnoPark</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'MySQL' %}">MySQL</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'django' %}">django</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'Mail.Ru' %}">Mail.Ru</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'Voloshin' %}">Voloshin</a></li>
+                    <li><a href="{% url 'questions_by_tag' 'Firefox' %}">Firefox</a></li>
                 </ol>
             </div>
             <div class="sidebar-module">
@@ -75,7 +77,7 @@
         </div>
     </div>
     <footer class="blog-footer">
-        <p><a href="#">AskGulyy</a> @ by Konstantin Gulyy</p>
+        <p><a href="{% url 'index' %}">AskGulyy</a> @ by Konstantin Gulyy</p>
     </footer>
 </div>
 </body>
