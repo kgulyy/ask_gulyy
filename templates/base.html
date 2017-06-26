@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block header %}
+        {% block title %}
+        {% endblock title %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static "bootstrap.min.css"%}" type="text/css"/>
+        <link rel="stylesheet" href="{% static "style.css"%}" type="text/css"/>
+    {% endblock header %}
+</head>
+
+<body class="container">
+<div class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="row">
+            <div class="col-md-2">
+                <a class="navbar-brand" href="#">AskGulyy</a>
+            </div>
+            <div class="col-md-7">
+                <form class="navbar-form navbar-left" role="search">
+                    <input id="searchLine" type="text" class="form-control" placeholder="Search">
+                    <button type="submit" class="btn btn-success">Ask!</button>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="mini-ava media-object" src="../uploads/ava.jpg" alt="Avatar">
+                    </a>
+                    <div class="media-body">
+                        <p id="username" class="media-heading">Dr. Pepper</p>
+                        <ol class="list-inline">
+                            <li><a href="#">settings</a></li>
+                            <li><a href="#">log out</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <!--<ol id="nonreg" class="list-inline navbar-text">
+                    <li><a href="#">log in</a></li>
+                    <li><a href="#">register</a></li>
+                </ol>-->
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <div class="col-md-3 col-md-offset-1 blog-sidebar">
+            <div class="sidebar-module">
+                <h4>Popular Tags</h4>
+                <ol class="list-inline">
+                    <li><a href="#">perl</a></li>
+                    <li><a href="#">python</a></li>
+                    <li><a href="#">TechnoPark</a></li>
+                    <li><a href="#">MySQL</a></li>
+                    <li><a href="#">django</a></li>
+                    <li><a href="#">Mail.Ru</a></li>
+                    <li><a href="#">Voloshin</a></li>
+                    <li><a href="#">Firefox</a></li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Best Members</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">Mr. Freeman</a></li>
+                    <li><a href="#">Dr. House</a></li>
+                    <li><a href="#">Bender</a></li>
+                    <li><a href="#">Queen Victoria</a></li>
+                    <li><a href="#">V. Pupkin</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <footer class="blog-footer">
+        <p><a href="#">AskGulyy</a> @ by Konstantin Gulyy</p>
+    </footer>
+</div>
+</body>
+</html>
