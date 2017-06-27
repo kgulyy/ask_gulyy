@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tag_name }}{% endblock %}
+
+{% block content %}
+    <h2>Tag: {{ tag_name }}</h2>
+    {% for q in questions %}
+        <div class="question">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="question-block">
+                        <img class="mini-ava img-rounded" src="/uploads/ava.jpg" alt="Avatar">
+                        <div class="btn-group-vertical">
+                            <button type="button" class="btn btn-default btn-xs">
+                                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-xs">{{ q.like }}</button>
+                            <button type="button" class="btn btn-default btn-xs">
+                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <h3>
+                        <a href="{% url 'question_detail' q.id %}">{{ q.title }}</a>
+                    </h3>
+                    <p>{{ q.text }}</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ol class="list-inline">
+                                <li><a href="{% url 'question_detail' q.id %}">answer <span class="badge">{{ q.answers|length }}</span></a></li>
+                            </ol>
+                        </div>
+                        <div class="col-md-9">
+                            <ol class="list-inline">Tags:
+                                {% for t in q.q_tags %}
+                                    <li><a href="{% url 'questions_by_tag' t %}">{{ t }}</a></li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <ul class="pagination">
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+{% endblock content %}

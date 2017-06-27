@@ -62,7 +62,8 @@ def hot(request):
 
 
 def questions_by_tag(request, tag_name):
-    return HttpResponse("You see questions by {0} tag".format(tag_name))
+    return render(request, 'tag.html', {'singin': False, 'tag_name': tag_name, 'questions': QUESTIONS.values(),
+                                        'tags': TAGS.values()})
 
 
 def question_detail(request, question_id):
