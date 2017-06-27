@@ -12,26 +12,53 @@ TAGS = {
     8: 'Firefox',
 }
 
+ANSWERS = {
+    1: {'id': 1, 'like': 3, 'text': 'First of all I would like to thanks you for the invitation to participate in '
+                                    'such a ... '
+                                    'Russian is the huge territory which in many respects needs to be render '
+                                    'habitable. '
+                                    'First of all I would like to thanks you for the invitation to participate in '
+                                    'such a ... '
+                                    'Russian is the huge territory which in many respects needs to be render '
+                                    'habitable.'},
+    2: {'id': 2, 'like': 2, 'text': 'Russian is the huge territory which in many respects needs to be render '
+                                    'habitable. '
+                                    'First of all I would like to thanks you for the invitation to participate in '
+                                    'such a ... '
+                                    'Russian is the huge territory which in many respects needs to be render '
+                                    'habitable. '
+                                    'First of all I would like to thanks you for the invitation to participate in '
+                                    'such a ...'},
+    3: {'id': 3, 'like': 0, 'text': 'Yes, you`re absolute right! '
+                                    'Yes, you`re absolute right! '
+                                    'Yes, you`re absolute right! '
+                                    'Yes, you`re absolute right! '
+                                    'Yes, you`re absolute right!'},
+}
+
 QUESTIONS = {
-    '1': {'id': 1, 'like': 9, 'answer': 3, 'title': 'How to build a moon park?', 'q_tags': {TAGS[6], TAGS[8]},
+    '1': {'id': 1, 'like': 9, 'answers': [ANSWERS[1], ANSWERS[2], ANSWERS[3]], 'title': 'How to build a moon park?',
+          'q_tags': {TAGS[6], TAGS[8]},
           'text': 'Guys, I have trouble with a moon park. '
                   'Can`t find th black-jack... '
                   'Guys, I have trouble with a moon park. '
                   'Can`t find th black-jack...'},
-    '2': {'id': 2, 'like': 7, 'answer': 4, 'q_tags': {TAGS[3], TAGS[4]}, 'title': 'I`m your eyes',
+    '2': {'id': 2, 'like': 7, 'answers': [ANSWERS[3]], 'title': 'I`m your eyes', 'q_tags': {TAGS[3], TAGS[4]},
           'text': 'I`m your eyes when you must steal'},
-    '3': {'id': 3, 'like': 4, 'answer': 1, 'title': 'I`m your pain', 'q_tags': {TAGS[1], TAGS[2]},
+    '3': {'id': 3, 'like': 4, 'answers': [ANSWERS[2], ANSWERS[3]], 'title': 'I`m your pain',
+          'q_tags': {TAGS[1], TAGS[2]},
           'text': 'I`m your pain when you can`t feel'},
 }
 
 
 def index(request):
-    return render(request, 'index.html', {'singin': True, 'questions': QUESTIONS.values(),
-                  'tags': TAGS.values()})
+    return render(request, 'index.html', {'singin': True, 'hot': False, 'questions': QUESTIONS.values(),
+                                          'tags': TAGS.values()})
 
 
 def hot(request):
-    return HttpResponse("Hello, world. You're at the hot url.")
+    return render(request, 'index.html', {'singin': True, 'hot': True, 'questions': QUESTIONS.values(),
+                                          'tags': TAGS.values()})
 
 
 def questions_by_tag(request, tag_name):
@@ -39,7 +66,8 @@ def questions_by_tag(request, tag_name):
 
 
 def question_detail(request, question_id):
-    return HttpResponse("It's {0} question".format(question_id))
+    return render(request, 'question.html', {'singin': True, 'question': QUESTIONS.get(question_id),
+                                             'tags': TAGS.values()})
 
 
 def login(request):
