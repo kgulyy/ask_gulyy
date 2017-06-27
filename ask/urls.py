@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^login/$', views.login, name='login'),
     url(r'^singup/$', views.singup, name='singup'),
     url(r'^ask/$', views.ask, name='ask'),
+    url(r'^settings/$', views.settings, name='settings'),
 ]

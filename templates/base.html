@@ -23,7 +23,7 @@
                 </form>
             </div>
             <div class="col-md-3">
-                {% if reg %}
+                {% if singin %}
                     <div class="media">
                         <a class="pull-left" href="#">
                             <img class="mini-ava media-object" src="../uploads/ava.jpg" alt="Avatar">
@@ -31,15 +31,15 @@
                         <div class="media-body">
                             <p id="username" class="media-heading">Dr. Pepper</p>
                             <ol class="list-inline">
-                                <li><a href="#">settings</a></li>
-                                <li><a href="#">log out</a></li>
+                                <li><a href="{% url 'settings' %}">settings</a></li>
+                                <li><a href="{% url 'login' %}">log out</a></li>
                             </ol>
                         </div>
                     </div>
                 {% else %}
                     <ol id="nonreg" class="list-inline navbar-text">
-                        <li><a href="#">log in</a></li>
-                        <li><a href="#">register</a></li>
+                        <li><a href="{% url 'login' %}">log in</a></li>
+                        <li><a href="{% url 'singup' %}">register</a></li>
                     </ol>
                 {% endif %}
             </div>
@@ -54,14 +54,9 @@
             <div class="sidebar-module">
                 <h4>Popular Tags</h4>
                 <ol class="list-inline">
-                    <li><a href="{% url 'questions_by_tag' 'perl' %}">perl</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'python' %}">python</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'TechnoPark' %}">TechnoPark</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'MySQL' %}">MySQL</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'django' %}">django</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'Mail.Ru' %}">Mail.Ru</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'Voloshin' %}">Voloshin</a></li>
-                    <li><a href="{% url 'questions_by_tag' 'Firefox' %}">Firefox</a></li>
+                    {% for tag in tags %}
+                        <li><a href="{% url 'questions_by_tag' tag %}">{{ tag }}</a></li>
+                    {% endfor %}
                 </ol>
             </div>
             <div class="sidebar-module">
