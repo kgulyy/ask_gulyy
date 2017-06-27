@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.name }}{% endblock %}
+
+{% block content %}
+    <h2>Settings: {{ user.name }}</h2>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputLogin" class="col-md-3 control-label">Login</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="inputLogin" value="{{ user.login }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="col-md-3 control-label">Email</label>
+            <div class="col-md-9">
+                <input type="email" class="form-control" id="inputEmail" value="{{ user.email }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNickName" class="col-md-3 control-label">NickName</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="inputNickName" value="{{ user.name }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAvatar" class="col-md-3 control-label">Upload avatar</label>
+            <img class="img-rounded col-md-2" src="/uploads/ava.jpg" alt="Avatar">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="file" id="inputAvatar">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock content %}

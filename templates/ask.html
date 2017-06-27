@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}New Question{% endblock %}
+
+{% block content %}
+    <h2>New Question</h2>
+    {#    <div class="alert alert-danger" role="alert">Sorry! You may specify max 3 tags!</div>#}
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputTitle" class="col-md-2 control-label">Title</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="inputTitle">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="textArea" class="col-md-2 control-label">Text</label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="textArea" rows="7"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputTags" class="col-md-2 control-label">Tags</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="inputTags">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Ask!</button>
+            </div>
+        </div>
+    </form>
+{% endblock content %}

@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 TAGS = {
@@ -50,6 +49,10 @@ QUESTIONS = {
           'text': 'I`m your pain when you can`t feel'},
 }
 
+USERS = {
+    1: {'login': 'dr_pepper', 'name': 'Dr. Pepper', 'email': 'dr.pepper@mail.ru'}
+}
+
 
 def index(request):
     return render(request, 'index.html', {'singin': True, 'hot': False, 'questions': QUESTIONS.values(),
@@ -80,8 +83,9 @@ def singup(request):
 
 
 def ask(request):
-    return HttpResponse("Hello, world. You're at the ask url.")
+    return render(request, 'ask.html', {'singin': True, 'tags': TAGS.values()})
 
 
 def settings(request):
-    return HttpResponse("Hello, world. You're at the settings url.")
+    return render(request, 'settings.html', {'singin': True, 'user': USERS[1],
+                                             'tags': TAGS.values()})
