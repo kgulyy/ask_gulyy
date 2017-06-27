@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ Login }}{% endblock %}
+
+{% block content %}
+    <h2>Log In</h2>
+{#    <div class="alert alert-danger" role="alert">Sorry, wrong password!</div>#}
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputLogin" class="col-md-2 control-label">Login</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="inputLogin">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" id="inputPassword">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Log in!</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <ol class="list-inline">
+                    <li><a href="{% url 'singup' %}">create new account</a></li>
+                </ol>
+            </div>
+        </div>
+    </form>
+{% endblock content %}

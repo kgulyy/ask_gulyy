@@ -72,11 +72,11 @@ def question_detail(request, question_id):
 
 
 def login(request):
-    return HttpResponse("Hello, world. You're at the login url.")
+    return render(request, 'login.html', {'singin': False, 'tags': TAGS.values()})
 
 
 def singup(request):
-    return HttpResponse("Hello, world. You're at the singup url.")
+    return render(request, 'signup.html', {'singin': False, 'tags': TAGS.values()})
 
 
 def ask(request):
