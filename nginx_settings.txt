@@ -1,0 +1,24 @@
+proxy_cache_path /tmp/nginx levels=1:2 keys_zone=my_zone:10m inactive=60m;
+proxy_cache_key "$scheme$request_method$host$request_uri";
+
+server {
+    listen 80 default_server;
+    charset utf-8;
+
+    location / {
+	proxy_cache my_zone;
+	proxy_cache_bypass  $http_cache_control;
+        add_header X-Proxy-Cache $upstream_cache_status;
+
+	include proxy_params;
+    	proxy_pass http://127.0.0.1:8000;
+    }
+
+    location ^~ /uploads/ {
+    	root /home/konstantin/Projects/ask_gulyy/;
+    }
+
+    location ~* ^.+\.(css|html|js|svg)$ {
+    	root /home/konstantin/Projects/ask_gulyy/;
+    }
+}
